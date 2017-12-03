@@ -1,0 +1,22 @@
+server:
+  port: 19000
+  compression:
+    enabled: true
+    min-response-size: 1000
+    mime-types: text/plain,text/html,text/xml,application/xml,application/json
+
+########################Spring-config########################
+spring:
+  datasource:
+    name: hikarids
+    username: ${DPGS_DB_USER:porta}
+    password: ${DPGS_DB_PWD:porta}
+    url: jdbc:postgresql://${DPGS_DB_ADDRESS:localhost}:5432/dpgs
+    driver-class-name: org.postgresql.Driver
+    hikari:
+      maximum-pool-size: 50
+      connection-timeout: 5000
+      idle-timeout: 600000
+      minimum-idle: 50
+  flyway:
+    enabled: false
